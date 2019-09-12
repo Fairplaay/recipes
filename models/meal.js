@@ -19,7 +19,7 @@ export default class Meal {
     this.title = title;
     this.affordability = affordability;
     this.complexity = complexity;
-    this.imageUr = imageUrl;
+    this.imageUrl = imageUrl;
     this.duration = duration;
     this.ingredients = ingredients;
     this.steps = steps;

@@ -1,8 +1,9 @@
 import React from 'react';
 import {
-  View, Text, StyleSheet, Button,
+  View, FlatList, StyleSheet,
 } from 'react-native';
-import CATEGORIES from '../data/dummy-data';
+import { CATEGORIES, MEALS } from '../data/dummy-data';
+import MealItem from '../components/MealItem';
 
 const styles = StyleSheet.create({
   container: {
@@ -14,16 +15,31 @@ const styles = StyleSheet.create({
 
 
 const CategoriesMealsScreen = ({ navigation }) => {
+  const renderMealItem = (itemData) => (
+    <MealItem
+      title={itemData.item.title}
+      duration={itemData.item.duration}
+      complexity={itemData.item.complexity}
+      affordability={itemData.item.affordability}
+      image={itemData.item.imageUrl}
+      onSelectedMeal={() => { navigation.navigate('MealDetail', { mealId: itemData.item.id }); }}
+    />
+  );
+
   const categoryId = navigation.getParam('categoryId');
 
-  const categorySelected = CATEGORIES.find((item) => item.id === categoryId);
+  const displaySelected = MEALS.filter((meal) => meal.categoryId.indexOf(categoryId) >= 0);
 
   return (
     <View style={styles.container}>
-      <Text>Categories meals</Text>
-      <Text>{categorySelected.title}</Text>
-      <Button title="Go to Details screen!" onPress={() => { navigation.navigate('MealDetail'); }} />
-      <Button title="Go back!" onPress={() => navigation.pop()} />
+      <FlatList
+        keyExtractor={(item) => item.id}
+        data={displaySelected}
+        renderItem={renderMealItem}
+        style={{
+          width: '100%', padding: 12,
+        }}
+      />
     </View>
   );
 };
