@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import mealsReducer from './meals';
 
 const allReducers = combineReducers({
-  meals: mealsReducer,
+  mealsReducer,
 });
 
 export default allReducers;

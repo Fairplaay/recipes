@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   ScrollView, View, Text, StyleSheet, Image,
 } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
-import { MEALS } from '../data/dummy-data';
+import { useSelector } from 'react-redux';
 import CustomHeaderButton from '../components/headerButton';
 import DefaultText from '../components/DefaultText';
 
@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
 
 
 const MealDetailsScreen = ({ navigation }) => {
+  const MEALS = useSelector((state) => state.mealsReducer.meals);
   const mealId = navigation.getParam('mealId');
   const selectedMeal = MEALS.find((item) => item.id === mealId);
 
@@ -60,10 +61,9 @@ const MealDetailsScreen = ({ navigation }) => {
 };
 
 MealDetailsScreen.navigationOptions = ({ navigation }) => {
-  const mealId = navigation.getParam('mealId');
-  const selectedMeal = MEALS.find((item) => item.id === mealId);
+  const headerTitle = navigation.getParam('mealTitle');
   return {
-    headerTitle: selectedMeal.title,
+    headerTitle,
     headerRight:
   <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
     <Item

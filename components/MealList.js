@@ -19,7 +19,7 @@ const MealList = ({ listData, navigation }) => {
       complexity={itemData.item.complexity}
       affordability={itemData.item.affordability}
       image={itemData.item.imageUrl}
-      onSelectedMeal={() => { navigation.navigate('MealDetail', { mealId: itemData.item.id }); }}
+      onSelectedMeal={() => { navigation.navigate('MealDetail', { mealId: itemData.item.id, mealTitle: itemData.item.title }); }}
     />
   );
   return (
