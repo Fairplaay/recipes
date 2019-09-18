@@ -37,7 +37,7 @@ const MealNavigator = createStackNavigator(
         headerLeft:
   <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
     <Item
-      title=" Menu"
+      title="Menu"
       iconName="ios-menu"
       onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
     />
@@ -82,14 +82,23 @@ const FiltersNavigator = createStackNavigator({
       headerLeft:
   <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
     <Item
-      title=" Menu"
+      title="Menu"
       iconName="ios-menu"
       onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
     />
   </HeaderButtons>,
+      headerRight:
+  <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+    <Item
+      title="Save"
+      iconName="ios-save"
+      onPress={navigation.getParam('save')}
+    />
+  </HeaderButtons>,
     }),
   },
-});
+},
+defaultNavOptions);
 
 const tabScreenConfigs = {
   Meals: {

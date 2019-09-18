@@ -5,7 +5,9 @@ import { StyleSheet, View } from 'react-native';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 import { useScreens } from 'react-native-screens';
+import { Provider } from 'react-redux';
 import MealNavigator from './navigation/MealsNavigation';
+import store from './store';
 
 useScreens();
 
@@ -30,7 +32,9 @@ const App = () => {
 
   return (
     <View style={styles.container}>
-      <MealNavigator />
+      <Provider store={store}>
+        <MealNavigator />
+      </Provider>
     </View>
   );
 };
