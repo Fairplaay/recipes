@@ -24,6 +24,8 @@ module.exports = {
     "react/jsx-filename-extension": 0,
     "react/no-array-index-key": 0,
     "react/prop-types": 0,
-    "react/jsx-props-no-spreading": 0
+    "react/jsx-props-no-spreading": 0,
+    "max-len": 0,
+    "no-case-declarations": 0,
   },
 };
